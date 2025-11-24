@@ -1,0 +1,39 @@
+name: Build Tachiyomi Extension
+
+
+on:
+push:
+branches: ["main", "master"]
+workflow_dispatch:
+
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+
+steps:
+- name: Checkout repository
+uses: actions/checkout@v3
+
+
+- name: Set up JDK
+uses: actions/setup-java@v3
+with:
+java-version: '17'
+distribution: 'temurin'
+
+
+- name: Grant permissions to gradlew
+run: chmod +x ./gradlew
+
+
+- name: Build extension APK
+run: ./gradlew assembleRelease
+
+
+- name: Upload built APK
+uses: actions/upload-artifact@v3
+with:
+name: comickfun
+path: build/outputs/apk/release/*.apk
