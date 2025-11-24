@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="org.comickfun">
+
+
+<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="33" />
+
+
+</manifest>
